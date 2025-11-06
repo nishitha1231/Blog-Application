@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog Home</title>
+</head>
+<body>
+  <h1>All Blog Posts</h1>
+
+  {% if post1 %}
+    {% for post in post1 %}
+      <div style="margin-bottom: 20px;">
+        <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+        <p>{{ post.content|truncatewords:25 }}</p>
+        <small>By {{ post.author.username }} on {{ post.created_at }}</small>
+      </div>
+      <hr>
+    {% endfor %}
+  {% else %}
+    <p>No blog posts available.</p>
+  {% endif %}
+</body>
+</html>
